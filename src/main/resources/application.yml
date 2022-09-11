@@ -1,0 +1,56 @@
+application:
+  version: 0.0.1
+logging:
+  level:
+    ROOT: info
+server:
+  port: 8020
+
+spring:
+  application:
+    name: my-social-pal-url-shortner
+  main:
+    allow-bean-definition-overriding: true
+
+  cloud:
+    config:
+      enabled: false
+
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'false'
+        jdbc:
+          batch_size: 25
+          order_inserts: true
+          time_zone: UTC
+          lob:
+            non_contextual_creation: true
+        hibernate:
+          temp.use_jdbc_metadata_defaults: 'false'
+        order_by:
+          default_null_ordering: 'none'
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/url_shortner
+    password: mysecretpassword
+    username: postgres
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 30000
+      maximum-pool-size: 5
+      pool-name: url-shortner-pool
+
+url.domain: http://localhost/
+
+
+
+
+
+
+
